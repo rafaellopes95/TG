@@ -19,11 +19,10 @@ public class PublicacaoDaoImpl implements PublicacaoDao {
 	
 	@Override
 	public List<Publicacao> listPublicacoes() {
-		List<Publicacao> publicacoes = entityManager.createQuery("SELECT p.codigo, p.autor, "
-				+ "p.tipoAutor, p.colaborador.codigo, p.colaborador.nome, p.aluno.ra, p.aluno.nome, "
-				+ "p.pagina.codigo, p.pagina.nome, p.texto, p.imagem, p.arquivo FROM Publicacao p "
+		List<Publicacao> publicacoes = entityManager.createQuery("SELECT p FROM Publicacao p "
 				+ "LEFT JOIN p.colaborador "
-				+ "LEFT JOIN p.aluno").getResultList();
+				+ "LEFT JOIN p.aluno "
+				+ "LEFT JOIN p.pagina").getResultList();
 		
 		return publicacoes;
 	}

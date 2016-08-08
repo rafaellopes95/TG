@@ -19,8 +19,8 @@ public class AlunoDaoImpl implements AlunoDao {
 	
 	@Override
 	public List<Aluno> listAlunos() {
-		List<Aluno> alunos = entityManager.createQuery("SELECT a.ra, a.nome, a.sexo, "
-				+ "a.anoIngresso, a.semestreCur, a.curso.sigla, a.curso.nome FROM Aluno a").getResultList();
+		List<Aluno> alunos = entityManager.createQuery("SELECT a FROM Aluno a "
+				+ "LEFT JOIN a.curso").getResultList();
 			
 		return alunos;
 	}

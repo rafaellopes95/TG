@@ -24,8 +24,10 @@ public class CursoDaoImpl implements CursoDao {
 
 	@Override
 	public List<Curso> listCursos() {
-		List<Curso> cursos = entityManager.createQuery("SELECT c.sigla, c.nome, c.periodo, "
-				+ "c.numSemestres FROM Curso c").getResultList();
+		List<Curso> cursos = entityManager.createQuery("SELECT c FROM Curso c "
+				+ "LEFT JOIN c.disciplinas "
+				+ "LEFT JOIN c.alunos "
+				+ "LEFT JOIN c.professores").getResultList();
 		
 		return cursos;
 	}

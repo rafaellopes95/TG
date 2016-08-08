@@ -19,8 +19,9 @@ public class PaginaDaoImpl implements PaginaDao {
 	
 	@Override
 	public List<Pagina> listPaginas() {
-		List<Pagina> paginas = entityManager.createQuery("SELECT p.codigo, p.nome, "
-				+ "p.descricao, p.disciplina.codigo, p.disciplina.nome FROM Pagina p").getResultList();
+		List<Pagina> paginas = entityManager.createQuery("SELECT p FROM Pagina p "
+				+ "LEFT JOIN p.disciplina "
+				+ "LEFT JOIN p.publicacoes").getResultList();
 		
 		return paginas;
 	}

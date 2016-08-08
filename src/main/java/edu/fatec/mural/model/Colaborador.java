@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -44,6 +45,10 @@ public class Colaborador {
 	@OneToMany(mappedBy = "colaborador")
 	@JsonIgnore
 	private List<Publicacao> publicacoes;
+	
+	@OneToOne(mappedBy = "colaborador")
+	@JsonIgnore
+	private Usuario usuario;
 	
 	public String getCodigo() {
 		return codigo;
@@ -100,5 +105,12 @@ public class Colaborador {
 	public void setPublicacoes(List<Publicacao> publicacoes) {
 		this.publicacoes = publicacoes;
 	}
-	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }

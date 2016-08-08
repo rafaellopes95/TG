@@ -12,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -50,6 +51,10 @@ public class Aluno {
 	@OneToMany(mappedBy = "aluno")
 	@JsonIgnore //usado p evitar loop infinito durante a serializacao em json pelo Jackson
 	private List<Publicacao> publicacoes;
+	
+	@OneToOne(mappedBy = "aluno")
+	@JsonIgnore
+	private Usuario usuario;
 
 	public String getRa() {
 		return ra;
@@ -75,12 +80,12 @@ public class Aluno {
 		this.sexo = sexo;
 	}
 	
-	public Date getDataIngresso() {
+	public Date getAnoIngresso() {
 		return anoIngresso;
 	}
 	
-	public void setDataIngresso(Date dataIngresso) {
-		this.anoIngresso = dataIngresso;
+	public void setAnoIngresso(Date anoIngresso) {
+		this.anoIngresso = anoIngresso;
 	}
 	
 	public int getSemestreCur() {
@@ -113,5 +118,13 @@ public class Aluno {
 
 	public void setPublicacoes(List<Publicacao> publicacoes) {
 		this.publicacoes = publicacoes;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }

@@ -19,8 +19,11 @@ public class DisciplinaDaoImpl implements DisciplinaDao {
 	
 	@Override
 	public List<Disciplina> listDisciplinas() {
-		List<Disciplina> disciplinas = entityManager.createQuery("SELECT d.codigo, d.nome, "
-				+ "d.semestreOfer, d.professor.codigo, d.professor.nome, d.curso.sigla, d.curso.nome FROM Disciplina d").getResultList();
+		List<Disciplina> disciplinas = entityManager.createQuery("SELECT d FROM Disciplina d "
+				+ "LEFT JOIN d.professor "
+				+ "LEFT JOIN d.curso "
+				+ "LEFT JOIN d.pagina "
+				+ "LEFT JOIN d.alunos").getResultList();
 		
 		return disciplinas;
 	}

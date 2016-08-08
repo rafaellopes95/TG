@@ -19,8 +19,11 @@ public class ColaboradorDaoImpl implements ColaboradorDao {
 	
 	@Override
 	public List<Colaborador> listColaboradores() {
-		List<Colaborador> colaboradores = entityManager.createQuery("SELECT c.codigo, c.nome, "
-				+ "c.formacao, c.tipoColab FROM Colaborador c").getResultList();
+		List<Colaborador> colaboradores = entityManager.createQuery("SELECT c FROM Colaborador c "
+				+ "LEFT JOIN c.disciplinas "
+				+ "LEFT JOIN c.cursos "
+				+ "LEFT JOIN c.publicacoes "
+				+ "LEFT JOIN c.usuario").getResultList();
 		
 		return colaboradores;
 	}
