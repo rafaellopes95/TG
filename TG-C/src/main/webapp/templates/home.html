@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="muralApp">
+  <head>
+  </head>
+  <body>
+    <div>
+        <div ng-if="$root.isAuthenticated">
+          <p ng-if="!aluno">Usuário: {{user.aluno.nome}}</p>
+          <p ng-if="aluno">Usuário: {{user.colaborador.nome}}</p>
+        </div>
+
+        <div ng-if="$root.isAuthenticated">
+          <p>Seja bem vindo ao Mural digital!</p>
+        </div>
+    </div>
+  </body>
+</html>
