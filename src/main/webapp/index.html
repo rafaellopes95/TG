@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="muralApp">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Dependencias CSS -->
+    <link rel="stylesheet" type="text/css" href="./resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./resources/css/bootstrap-theme.min.css">
+    <title>Mural digital</title>
+  </head>
+  <body>  
+
+  <!-- colocar imagem aqui -->
+    <div ng-controller="autenticacao">
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            </button>
+            <a class="navbar-brand" href="#/home">Mural Digital</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li ng-if="!$root.isAuthenticated"><a href="#/login">Login</a></li>
+              <li ng-if="$root.isAuthenticated && $root.isAdmin" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opções do Administrador<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li ng-if="$root.isAuthenticated"><a href="" ng-click="logout()">Logout</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </div>
+
+    <div ng-view></div>
+
+    <!-- Dependencias JavaScript -->
+    <script src="./resources/js/angular.min.js"></script>
+    <script src="./resources/js/angular-route.min.js"/></script>
+    <script src="./resources/js/angular-cookies.min.js"/></script>
+    <script src="./resources/js/angular-cookies.min.js"/></script>
+    <script src="./resources/js/jquery-3.1.0.min.js"/></script> <!-- jQuery antes do Bootstrap -->
+    <script src="./resources/js/bootstrap.min.js"/></script> 
+	  <script src="./resources/js/app.js"></script> <!-- app.js depois das dependencias de AngularJS -->
+    <script src="./resources/js/controllers/LoginController.js"></script>
+  </body>
+</html>

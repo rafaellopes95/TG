@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="muralApp">
+  <head>
+    <meta charset="UTF-8"></meta>
+  </head>
+  <body>
+    <center>
+      <div>
+        <form role="form" ng-submit="login()" class="panel panel-primary" style="width:30%">
+          <div class="panel-heading">
+            <h4>Login</h4>
+          </div>
+          <div class="panel-body">
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon" id="sizing-addon1">Usuário:</span>
+              <input type="text" id="username" name="username" class="form-control" ng-model="usuario.username"/>
+            </div></br>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon" id="sizing-addon1">Senha:</span>
+              <input type="password" id="password" name="password" class="form-control" ng-model="usuario.password"/>
+            </div></br>
+            <input class="btn btn-lg btn-primary" type="submit" value="Entrar"/>
+          </div>
+        </form>
+      </div>
+    </center>
+  </body>
+</html>
